@@ -238,3 +238,9 @@ I wrote each prompt before the work on that problem started, then ran it.
 > Add a map of the files and the outputs. Before committing, make sure the real `.env` is ignored and that my Portkey key doesn't appear in any tracked file. Both DB files under `data/` must be in the repo.
 >
 > Then `git init`, commit, and create a **public** GitHub repo `campus-customs-hw5` under my account with `gh`, and push. Put the repo URL in `output/github_url.txt`, commit, and push again. Finally, clone the repo into a temp folder and check that the files match the expected layout and there's no `.env` in it.
+
+**Follow-up:**
+
+> The README and the MCP README both say the server has 22 tools, but listing them over MCP gives **23**. Fix the count everywhere before the push.
+
+*What was lacking:* the docs were written from memory instead of from the server's actual tool list.
