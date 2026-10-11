@@ -1,0 +1,21 @@
+# Secrets — never commit the real key
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node / Vite
+node_modules/
+frontend/dist/
+
+# Local tooling
+.claude/
+*.log
+
+# NOTE: data/ and *.db are intentionally NOT ignored —
+# both data/campus_customs.db and data/campus_customs_new.db ship with the repo.

@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resolved Board Screenshots</title>
+<style>
+  :root { --bg: #f3efe6; --paper: #fffdf8; --ink: #1d2433; --muted: #667085; --line: #e4ddce; --yale: #00356b; --ok: #157347; --ok-soft: #e3f3ea; --warn: #a15c00; --warn-soft: #fcf0dc; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg: #12151c; --paper: #1a1e28; --ink: #e8ebf2; --muted: #9aa3b5; --line: #2c3242; --yale: #8db8ea; --ok: #5fd39a; --ok-soft: #14291f; --warn: #f0b45c; --warn-soft: #2d2414; }
+  }
+  :root[data-theme="dark"] { --bg: #12151c; --paper: #1a1e28; --ink: #e8ebf2; --muted: #9aa3b5; --line: #2c3242; --yale: #8db8ea; --ok: #5fd39a; --ok-soft: #14291f; --warn: #f0b45c; --warn-soft: #2d2414; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.55 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  header { background: #00356b; color: #fff; padding: 28px 16px 22px; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  header .wrap { padding: 0; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: 12px; opacity: .8; }
+  h1 { margin: 4px 0 6px; font: 700 28px/1.2 Georgia, "Times New Roman", serif; }
+  header p { margin: 0; opacity: .88; max-width: 820px; }
+  nav { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 16px; }
+  nav a { color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 4px 12px; font-size: 13px; }
+  main { padding: 26px 0 60px; }
+  section.ticket { background: var(--paper); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 28px; box-shadow: 0 6px 24px rgba(40,30,10,.06); }
+  .head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+  .tid { font: 700 28px ui-monospace, Consolas, monospace; color: var(--yale); }
+  h2 { margin: 0; font: 700 21px Georgia, serif; }
+  .stamp { margin-left: auto; color: var(--ok); border: 3px double var(--ok); border-radius: 8px; padding: 3px 10px; font: 700 14px Georgia, serif; letter-spacing: .12em; text-transform: uppercase; transform: rotate(-4deg); }
+  .facts { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
+  .fact { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px 11px; font-size: 13px; }
+  .fact.money { background: var(--warn-soft); color: var(--warn); border-color: transparent; font-weight: 700; }
+  .fact.zero { background: var(--ok-soft); color: var(--ok); border-color: transparent; font-weight: 700; }
+  .outcome { margin: 0 0 14px; font: 16px/1.5 Georgia, serif; }
+  figure { margin: 0; }
+  figure.main img { width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block; }
+  figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  .more { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; margin-top: 16px; }
+  .more img { width: 100%; height: 170px; object-fit: cover; object-position: top; border-radius: 8px; border: 1px solid var(--line); display: block; }
+  a { color: var(--yale); }
+  .note { background: var(--warn-soft); border-radius: 10px; padding: 10px 14px; font-size: 14px; margin-bottom: 24px; }
+  footer { text-align: center; color: var(--muted); font-size: 12px; padding-bottom: 30px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="eyebrow">Campus Customs · HW5 · Problem 9</div>
+    <h1>Resolved board: all three tickets</h1>
+    <p>Screenshots of the React board (<code>frontend/</code>, <code>npm run dev</code>) after the full run on a freshly reset database. Each ticket shows the "Who did what" view, plus its live feed, the customer draft, and a frame captured <i>during</i> the run. Click any image for full size.</p>
+    <nav><a href="#t101">101 Bulldog tee</a><a href="#t102">102 Rent due</a><a href="#t103">103 Bulk hoodies</a><a href="desk_tickets.html">Plan vs. actual →</a></nav>
+  </div>
+</header>
+<main class="wrap">
+  <div class="note">Checking went <b>$3,400.00 → $2,552.00 → $152.00 → $152.00</b>, which matches <code>cash_accounts</code> in <code>data/campus_customs_new.db</code>. Payments were approved on the board as "Yong Sung Park (via Claude)": I asked Claude to click Approve for me, and the agents only prepared the requests. The full-page captures were taken from the live board with headless Chrome via deep links like <code>?ticket=103&amp;tab=summary</code>.</div>
+
+  <section class="ticket" id="t101">
+    <div class="head"><span class="tid">#101</span><h2>Bulldog tee: Tauhid Zaman</h2><span class="stamp">Resolved</span></div>
+    <div class="facts">
+      <span class="fact">first call: Inventory</span>
+      <span class="fact">Boss → Inventory → Accounting · Boss → Customer Service</span>
+      <span class="fact">Facilities not involved</span>
+      <span class="fact money">−$848.00 (invoice $840 + PO $8)</span>
+    </div>
+    <p class="outcome">Paid $840 to Bulldog Print Co for invoice 501 and $8 for the one-unit CC-TEE-WHITE size S restock PO. The PO is ordered with expected arrival 2026-09-05, and customer draft #1 is saved and unsent.</p>
+    <figure class="main"><a href="board_screenshots/ticket-101-summary.png" target="_blank"><img src="board_screenshots/ticket-101-summary.png" alt="Board on ticket 101, Who did what tab, after resolution"></a>
+      <figcaption>Ticket 101 resolved: delegation chain, per-agent cards with MCP tools, the two human approvals, and PO #1.</figcaption></figure>
+    <div class="more">
+      <figure><a href="board_screenshots/live-101-handoff.jpg" target="_blank"><img src="board_screenshots/live-101-handoff.jpg" alt="Live: Inventory handing off to Accounting"></a><figcaption>Live, during the run: Inventory hands the restock to Accounting (a peer hand-off).</figcaption></figure>
+      <figure><a href="board_screenshots/live-101-awaiting-approval.jpg" target="_blank"><img src="board_screenshots/live-101-awaiting-approval.jpg" alt="Ticket 101 waiting on approval"></a><figcaption>Work phase done: "Needs your approval (2)".</figcaption></figure>
+      <figure><a href="board_screenshots/ticket-101-feed.png" target="_blank"><img src="board_screenshots/ticket-101-feed.png" alt="Ticket 101 live feed"></a><figcaption>Live feed: hand-offs, tool calls, reports.</figcaption></figure>
+      <figure><a href="board_screenshots/ticket-101-draft.png" target="_blank"><img src="board_screenshots/ticket-101-draft.png" alt="Customer draft for ticket 101"></a><figcaption>Customer draft #1 to Tauhid: draft, not sent.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="ticket" id="t102">
+    <div class="head"><span class="tid">#102</span><h2>Rent due: Elm City Properties</h2><span class="stamp">Resolved</span></div>
+    <div class="facts">
+      <span class="fact">first call: Facilities</span>
+      <span class="fact">Boss → Facilities → Accounting</span>
+      <span class="fact">Inventory &amp; Customer Service not involved</span>
+      <span class="fact money">−$2,400.00 rent</span>
+    </div>
+    <p class="outcome">Paid $2,400 rent to Elm City Properties for the Chapel Street shop. The lease now shows the next rent due 2026-10-02, and $152 remains in checking.</p>
+    <figure class="main"><a href="board_screenshots/ticket-102-summary.png" target="_blank"><img src="board_screenshots/ticket-102-summary.png" alt="Board on ticket 102 after resolution"></a>
+      <figcaption>Ticket 102 resolved: Facilities verified the lease, then handed off to Accounting, and the human approved $2,400.</figcaption></figure>
+    <div class="more">
+      <figure><a href="board_screenshots/live-102-handoff.jpg" target="_blank"><img src="board_screenshots/live-102-handoff.jpg" alt="Live: Facilities waiting on Accounting"></a><figcaption>Live, during the run: Facilities → Accounting hand-off while 101 shows RESOLVED.</figcaption></figure>
+      <figure><a href="board_screenshots/ticket-102-feed.png" target="_blank"><img src="board_screenshots/ticket-102-feed.png" alt="Ticket 102 live feed"></a><figcaption>Live feed for 102.</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="ticket" id="t103">
+    <div class="head"><span class="tid">#103</span><h2>Bulk hoodie discount: Yale AI Club</h2><span class="stamp">Resolved</span></div>
+    <div class="facts">
+      <span class="fact">first call: Accounting</span>
+      <span class="fact">Boss → Accounting · Boss → Inventory → Accounting · Boss → Customer Service</span>
+      <span class="fact">Facilities not involved</span>
+      <span class="fact zero">$0.00: $264 PO refused by the cash guard</span>
+    </div>
+    <p class="outcome">Approved a 15% discount on the 8 size M hoodies in stock ($49.30 each, $394.40 total). The full 20 can't be confirmed: a 12-unit restock would cost $264 and only $152 is available, so no PO was placed. Draft #2 asks the club whether they want the 8.</p>
+    <figure class="main"><a href="board_screenshots/ticket-103-summary.png" target="_blank"><img src="board_screenshots/ticket-103-summary.png" alt="Board on ticket 103 after resolution"></a>
+      <figcaption>Ticket 103 resolved: all three tickets stamped, cash at $152.00, and the "Guardrails that fired" panel showing the refused PO.</figcaption></figure>
+    <div class="more">
+      <figure><a href="board_screenshots/live-103-working.jpg" target="_blank"><img src="board_screenshots/live-103-working.jpg" alt="Live: Boss reading Accounting's report"></a><figcaption>Live, during the run: the Boss reads Accounting's margin report.</figcaption></figure>
+      <figure><a href="board_screenshots/ticket-103-feed.png" target="_blank"><img src="board_screenshots/ticket-103-feed.png" alt="Ticket 103 live feed"></a><figcaption>Live feed for 103.</figcaption></figure>
+      <figure><a href="board_screenshots/ticket-103-draft.png" target="_blank"><img src="board_screenshots/ticket-103-draft.png" alt="Customer draft for ticket 103"></a><figcaption>Customer draft #2 to the Yale AI Club: draft, not sent.</figcaption></figure>
+    </div>
+  </section>
+</main>
+<footer>Campus Customs Operations Desk · HW5 · screenshots in <code>output/board_screenshots/</code></footer>
+</body>
+</html>

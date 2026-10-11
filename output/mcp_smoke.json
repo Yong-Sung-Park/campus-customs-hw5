@@ -1,0 +1,247 @@
+{
+  "generated_for": "Problem 4 — MCP smoke test",
+  "vibe_coder": "Claude Code 2.1.295 (headless `claude -p`, model claude-sonnet-5-5)",
+  "mcp_config": ".mcp.json -> server 'campus-customs' (stdio, mcp_server/server.py)",
+  "database": "data/campus_customs_new.db",
+  "all_outputs_match_db": true,
+  "tests": [
+    {
+      "tool_name": "check_stock",
+      "prompt": "Using the campus-customs MCP tools, how many Classic Bulldog Tees in size S do we have, and what other sizes are in stock?",
+      "arguments": {
+        "sku": "CC-TEE-WHITE",
+        "size": "S"
+      },
+      "tool_output": {
+        "found": true,
+        "sku": "CC-TEE-WHITE",
+        "name": "Classic Bulldog Tee",
+        "size": "S",
+        "qty_on_hand": 0,
+        "in_stock": false,
+        "location": "Aisle B",
+        "all_sizes": [
+          {
+            "size": "S",
+            "qty": 0
+          },
+          {
+            "size": "M",
+            "qty": 5
+          },
+          {
+            "size": "L",
+            "qty": 3
+          },
+          {
+            "size": "XL",
+            "qty": 2
+          }
+        ]
+      },
+      "all_mcp_calls_in_this_session": [
+        {
+          "tool_name": "check_stock",
+          "mcp_tool_id": "mcp__campus-customs__check_stock",
+          "arguments": {
+            "sku": "CC-TEE-BULLDOG",
+            "size": "S"
+          },
+          "tool_output": {
+            "found": false,
+            "error": "No SKU CC-TEE-BULLDOG in inventory.",
+            "known_skus": [
+              "CC-HAT-BLUE",
+              "CC-HOOD-NAVY",
+              "CC-MUG-CREST",
+              "CC-TEE-WHITE"
+            ]
+          }
+        },
+        {
+          "tool_name": "check_stock",
+          "mcp_tool_id": "mcp__campus-customs__check_stock",
+          "arguments": {
+            "sku": "CC-TEE-WHITE",
+            "size": "S"
+          },
+          "tool_output": {
+            "found": true,
+            "sku": "CC-TEE-WHITE",
+            "name": "Classic Bulldog Tee",
+            "size": "S",
+            "qty_on_hand": 0,
+            "in_stock": false,
+            "location": "Aisle B",
+            "all_sizes": [
+              {
+                "size": "S",
+                "qty": 0
+              },
+              {
+                "size": "M",
+                "qty": 5
+              },
+              {
+                "size": "L",
+                "qty": 3
+              },
+              {
+                "size": "XL",
+                "qty": 2
+              }
+            ]
+          }
+        }
+      ],
+      "vibe_coder_answer": "We have **0** Classic Bulldog Tees (SKU `CC-TEE-WHITE`) in size S. The shelf location is Aisle B.\n\nThese sizes are in stock:\n\n| Size | Qty on hand |\n|------|-------------|\n| M | 5 |\n| L | 3 |\n| XL | 2 |\n\nI guessed one SKU, `CC-TEE-BULLDOG`, which doesn't exist. The inventory's known SKUs are `CC-HAT-BLUE`, `CC-HOOD-NAVY`, `CC-MUG-CREST` and `CC-TEE-WHITE`. `CC-TEE-WHITE` is the one named \"Classic Bulldog Tee\".",
+      "db_check": {
+        "sql": "SELECT size, qty, location, name FROM inventory WHERE sku='CC-TEE-WHITE'",
+        "db_rows": [
+          {
+            "size": "S",
+            "qty": 0,
+            "location": "Aisle B",
+            "name": "Classic Bulldog Tee"
+          },
+          {
+            "size": "M",
+            "qty": 5,
+            "location": "Aisle B",
+            "name": "Classic Bulldog Tee"
+          },
+          {
+            "size": "L",
+            "qty": 3,
+            "location": "Aisle B",
+            "name": "Classic Bulldog Tee"
+          },
+          {
+            "size": "XL",
+            "qty": 2,
+            "location": "Aisle B",
+            "name": "Classic Bulldog Tee"
+          }
+        ],
+        "matches": true
+      }
+    },
+    {
+      "tool_name": "get_lease",
+      "prompt": "Using the campus-customs MCP tools, when is the rent due on lease 1, how much is it, and how many days do we have?",
+      "arguments": {
+        "lease_id": 1
+      },
+      "tool_output": {
+        "found": true,
+        "lease_id": 1,
+        "space_name": "Chapel Street shop",
+        "landlord": "Elm City Properties",
+        "monthly_rent": 2400,
+        "next_due": "2026-09-02",
+        "date_today": "2026-08-31",
+        "days_until_due": 2,
+        "overdue": false,
+        "notes": null
+      },
+      "all_mcp_calls_in_this_session": [
+        {
+          "tool_name": "get_lease",
+          "mcp_tool_id": "mcp__campus-customs__get_lease",
+          "arguments": {
+            "lease_id": 1
+          },
+          "tool_output": {
+            "found": true,
+            "lease_id": 1,
+            "space_name": "Chapel Street shop",
+            "landlord": "Elm City Properties",
+            "monthly_rent": 2400,
+            "next_due": "2026-09-02",
+            "date_today": "2026-08-31",
+            "days_until_due": 2,
+            "overdue": false,
+            "notes": null
+          }
+        }
+      ],
+      "vibe_coder_answer": "For lease 1 (Chapel Street shop, landlord Elm City Properties):\n\n- **Due date:** September 2, 2026\n- **Amount:** $2,400 a month\n- **Time left:** 2 days. The shop's \"today\" is August 31, 2026, and the rent isn't overdue.\n\nThe shop's date comes from the database (`desk.date_today`), not the real clock. Your session says today is 2026-10-11, so by that date the September 2 due date would already be well past. The 2-day figure is only correct relative to the shop's date.",
+      "db_check": {
+        "sql": "SELECT * FROM leases WHERE id=1; SELECT date_today FROM desk",
+        "db_rows": [
+          {
+            "id": 1,
+            "space_name": "Chapel Street shop",
+            "landlord": "Elm City Properties",
+            "monthly_rent": 2400.0,
+            "next_due": "2026-09-02",
+            "notes": null
+          },
+          {
+            "date_today": "2026-08-31"
+          }
+        ],
+        "expected_days_until_due": 2,
+        "matches": true
+      }
+    },
+    {
+      "tool_name": "get_pricing",
+      "prompt": "Using the campus-customs MCP tools, what are the cost, list price, and margin on CC-HOOD-NAVY, and what's left if we give a 15% bulk discount?",
+      "arguments": {
+        "sku": "CC-HOOD-NAVY",
+        "discount_pct": 15
+      },
+      "tool_output": {
+        "found": true,
+        "sku": "CC-HOOD-NAVY",
+        "unit_cost": 22,
+        "list_price": 58,
+        "margin_per_unit_at_list": 36,
+        "margin_pct_at_list": 62.1,
+        "discount_pct": 15,
+        "discounted_price": 49.3,
+        "margin_per_unit_at_discount": 27.3,
+        "margin_pct_at_discount": 55.4,
+        "below_cost": false
+      },
+      "all_mcp_calls_in_this_session": [
+        {
+          "tool_name": "get_pricing",
+          "mcp_tool_id": "mcp__campus-customs__get_pricing",
+          "arguments": {
+            "sku": "CC-HOOD-NAVY",
+            "discount_pct": 15
+          },
+          "tool_output": {
+            "found": true,
+            "sku": "CC-HOOD-NAVY",
+            "unit_cost": 22,
+            "list_price": 58,
+            "margin_per_unit_at_list": 36,
+            "margin_pct_at_list": 62.1,
+            "discount_pct": 15,
+            "discounted_price": 49.3,
+            "margin_per_unit_at_discount": 27.3,
+            "margin_pct_at_discount": 55.4,
+            "below_cost": false
+          }
+        }
+      ],
+      "vibe_coder_answer": "Here are the numbers for **CC-HOOD-NAVY** from the campus-customs pricing tool:\n\n| | Per unit | Margin % |\n|---|---|---|\n| Unit cost | $22.00 | n/a |\n| List price | $58.00 | n/a |\n| Margin at list | $36.00 | 62.1% |\n| Price after 15% bulk discount | $49.30 | n/a |\n| Margin after 15% discount | $27.30 | 55.4% |\n\nThe 15% discount cuts $8.70 off the price and drops the margin by about 6.7 points. The tool reports the discounted price is not below cost, so we still keep $27.30 per hoodie.",
+      "db_check": {
+        "sql": "SELECT * FROM pricing WHERE sku='CC-HOOD-NAVY'",
+        "db_rows": [
+          {
+            "sku": "CC-HOOD-NAVY",
+            "unit_cost": 22.0,
+            "list_price": 58.0
+          }
+        ],
+        "expected_discounted_price": 49.3,
+        "expected_margin_at_discount": 27.3,
+        "matches": true
+      }
+    }
+  ]
+}

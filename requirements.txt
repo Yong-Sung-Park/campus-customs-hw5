@@ -1,0 +1,9 @@
+# Campus Customs HW5 — MCP server + FastAPI backend + PydanticAI agent team
+fastmcp>=4.1
+mcp>=2.3
+pydantic>=2.14
+pydantic-ai-slim[openai,mcp]>=2.55
+openai>=3.28
+fastapi>=0.143
+uvicorn[standard]>=0.54
+python-dotenv>=1.2
